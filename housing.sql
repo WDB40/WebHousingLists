@@ -69,6 +69,56 @@ LOCK TABLES `listing_details` WRITE;
 INSERT INTO `listing_details` VALUES (1,1,NULL),(2,1,400000.00);
 /*!40000 ALTER TABLE `listing_details` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `neighborhood`
+--
+
+DROP TABLE IF EXISTS `neighborhood`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `neighborhood` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `NeighborhoodName` varchar(25) DEFAULT NULL,
+  `SchoolDistrictID` int(11) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `neighborhood`
+--
+
+LOCK TABLES `neighborhood` WRITE;
+/*!40000 ALTER TABLE `neighborhood` DISABLE KEYS */;
+INSERT INTO `neighborhood` VALUES (1,'ABC',1);
+/*!40000 ALTER TABLE `neighborhood` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `school_district`
+--
+
+DROP TABLE IF EXISTS `school_district`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `school_district` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `DistrictName` varchar(25) DEFAULT NULL,
+  `Rating` decimal(3,1) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `school_district`
+--
+
+LOCK TABLES `school_district` WRITE;
+/*!40000 ALTER TABLE `school_district` DISABLE KEYS */;
+INSERT INTO `school_district` VALUES (1,'Ankeny',99.9);
+/*!40000 ALTER TABLE `school_district` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -79,4 +129,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-02-26 15:58:33
+-- Dump completed on 2019-02-26 16:20:21

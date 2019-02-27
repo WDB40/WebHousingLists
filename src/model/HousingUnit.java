@@ -1,23 +1,51 @@
 package model;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="TEST_HOUSING")
 public class HousingUnit {
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="ID")
 	private int id;
-	private int streetNumner;
+	
+	@Column(name="STREET_NUMBER")
+	private int streetNumber;
+	
+	@Column(name="STREET_NAME")
 	private String streetName;
+	
+	@Column(name="UNIT_NUMBER")
 	private int unitNumber;
+	
+	@Column(name="CITY")
 	private String city;
+	
+	@Column(name="ZIPCODE")
 	private int zipcode;
+	
+	@Column(name="STATE")
 	private String state;
+	
 	//private Neighborhood neighborhood;
 	
 	public HousingUnit() {
 		super();
 	}
 	
-	public HousingUnit(int streetNumner, String streetName, int unitNumber, String city, int zipcode, String state) {
+	public HousingUnit(int streetNumber, String streetName, int unitNumber, String city, int zipcode, String state) {
 		super();
-		this.streetNumner = streetNumner;
+		this.streetNumber = streetNumber;
 		this.streetName = streetName;
 		this.unitNumber = unitNumber;
 		this.city = city;
@@ -33,12 +61,12 @@ public class HousingUnit {
 		this.id = id;
 	}
 	
-	public int getStreetNumner() {
-		return streetNumner;
+	public int getStreetNumber() {
+		return streetNumber;
 	}
 	
-	public void setStreetNumner(int streetNumner) {
-		this.streetNumner = streetNumner;
+	public void setStreetNumber(int streetNumner) {
+		this.streetNumber = streetNumner;
 	}
 	
 	public String getStreetName() {
@@ -83,7 +111,7 @@ public class HousingUnit {
 	
 	@Override
 	public String toString() {
-		return "HousingUnit [id=" + id + ", streetNumner=" + streetNumner + ", streetName=" + streetName
+		return "HousingUnit [id=" + id + ", streetNumber=" + streetNumber + ", streetName=" + streetName
 				+ ", unitNumber=" + unitNumber + ", city=" + city + ", zipcode=" + zipcode + ", state=" + state + "]";
 	}
 

@@ -2,11 +2,30 @@ package model;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="TEST_LISTING")
 public class Listing {
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="ID")
 	private int id;
+	
+	@JoinColumn(name="UNIT_ID")
 	private HousingUnit housingUnit;
+	
+	@Column(name="PRICE")
 	private double price;
+	
+	@Column(name="LIST_DATE")
 	private LocalDate listDate;
 	
 	public Listing() {

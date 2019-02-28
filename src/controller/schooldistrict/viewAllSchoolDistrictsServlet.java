@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class viewAllSchoolDistrictServlet
+ * Servlet implementation class viewAllSchoolDistrictsServlet
  */
-@WebServlet("/viewAllSchoolDistrictServlet")
+@WebServlet("/viewAllSchoolDistrictsServlet")
 public class viewAllSchoolDistrictsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

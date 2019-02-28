@@ -110,11 +110,21 @@ public class HousingUnit {
 	public void setState(String state) {
 		this.state = state;
 	}
-	
+
+	public Neighborhood getNeighborhood() {
+		return neighborhood;
+	}
+
+	public void setNeighborhood(Neighborhood neighborhood) {
+		this.neighborhood = neighborhood;
+	}
+
 	@Override
 	public String toString() {
 		return "HousingUnit [id=" + id + ", streetNumber=" + streetNumber + ", streetName=" + streetName
-				+ ", unitNumber=" + unitNumber + ", city=" + city + ", zipcode=" + zipcode + ", state=" + state + "]";
+				+ ", unitNumber=" + unitNumber + ", city=" + city + ", zipcode=" + zipcode + ", state=" + state
+				+ ", neighborhood=" + neighborhood + "]";
 	}
-
+	
+	
 }

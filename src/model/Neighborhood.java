@@ -16,7 +16,7 @@ public class Neighborhood {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
 	private int id;
-	@Column(name = "NeighborName")
+	@Column(name = "NeighborhoodName")
 	private String neighborName;
 	@JoinColumn(name = "SchoolDistrictID")
 	private int schoolDistrictId;

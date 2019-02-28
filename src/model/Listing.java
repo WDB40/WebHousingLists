@@ -11,7 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="TEST_LISTING")
+@Table(name="LISTING_DETAILS")
 public class Listing {
 	
 	@Id

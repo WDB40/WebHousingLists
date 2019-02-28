@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="TEST_HOUSING")
+@Table(name="HOUSING_UNIT")
 public class HousingUnit {
 	
 	@Id
@@ -37,7 +37,9 @@ public class HousingUnit {
 	@Column(name="STATE")
 	private String state;
 	
-	//private Neighborhood neighborhood;
+	@ManyToOne(cascade= CascadeType.MERGE)
+	@JoinColumn(name="NEIGHBORHOOD")
+	private Neighborhood neighborhood;
 	
 	public HousingUnit() {
 		super();

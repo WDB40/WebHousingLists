@@ -64,7 +64,7 @@ public class addHousingUnitServlet extends HttpServlet {
 			
 			housingUnitDTO.addHousingUnit(housingUnit);
 			
-			getServletContext().getRequestDispatcher("/index.html").forward(request,response);
+			getServletContext().getRequestDispatcher("/viewAllHousingUnitsServlet").forward(request,response);
 			
 		} catch (NumberFormatException exception) {
 			getServletContext().getRequestDispatcher("/addHousingUnit.jsp").forward(request, response);

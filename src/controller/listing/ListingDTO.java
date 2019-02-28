@@ -74,4 +74,24 @@ public class ListingDTO {
 		entityManager.close();
 	}
 	
+	public List<Listing> getListingsForHousingUnit(int housingUnitId) {
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		
+		entityManager.getTransaction().begin();
+		
+		TypedQuery<Listing> typedQuery = entityManager.createQuery(
+															"SELECT listing "
+															+ "FROM Listing listing "
+															+ "WHERE listing.housingUnit.id = :housingUnitId",
+															Listing.class);
+		
+		typedQuery.setParameter("housingUnitId", housingUnitId);
+		
+		List<Listing> foundListings = typedQuery.getResultList();
+		
+		entityManager.close();
+		
+		return foundListings;
+	}
+	
 }

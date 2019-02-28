@@ -7,6 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
+import controller.listing.ListingDTO;
 import model.HousingUnit;
 
 public class HousingUnitDTO {
@@ -48,23 +49,26 @@ public class HousingUnitDTO {
 	}
 	
 	public void removeHousingUnit(HousingUnit housingUnit) {
-		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		
-		entityManager.getTransaction().begin();
-		
-		TypedQuery<HousingUnit> typedQuery = entityManager.createQuery(
-																"SELECT housingUnit "
-																+ "FROM HousingUnit housingUnit "
-																+ "WHERE housingUnit.id = :selectedHousingUnitId",
-																HousingUnit.class);
-		
-		typedQuery.setParameter("selectedHousingUnitId", housingUnit.getId());
-		
-		HousingUnit result = typedQuery.getSingleResult();
-		
-		entityManager.remove(result);
-		entityManager.getTransaction().commit();
-		entityManager.close();
+		if(!this.hasActiveListing(housingUnit)) {
+			EntityManager entityManager = entityManagerFactory.createEntityManager();
+			
+			entityManager.getTransaction().begin();
+			
+			TypedQuery<HousingUnit> typedQuery = entityManager.createQuery(
+																	"SELECT housingUnit "
+																	+ "FROM HousingUnit housingUnit "
+																	+ "WHERE housingUnit.id = :selectedHousingUnitId",
+																	HousingUnit.class);
+			
+			typedQuery.setParameter("selectedHousingUnitId", housingUnit.getId());
+			
+			HousingUnit result = typedQuery.getSingleResult();
+			
+			entityManager.remove(result);
+			entityManager.getTransaction().commit();
+			entityManager.close();
+		}
 	}
 	
 	public void updateHousingUnit(HousingUnit housingUnit) {
@@ -74,6 +78,18 @@ public class HousingUnitDTO {
 		entityManager.merge(housingUnit);
 		entityManager.getTransaction().commit();
 		entityManager.close();
+	}
+	
+	public boolean hasActiveListing(HousingUnit housingUnit) {
+		boolean active = false;
+		
+		ListingDTO listingDTO = new ListingDTO();
+		
+		if(!listingDTO.getListingsForHousingUnit(housingUnit.getId()).isEmpty()) {
+			active = true;
+		}
+		
+		return active;
 	}
 
 }

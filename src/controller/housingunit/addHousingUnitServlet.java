@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import controller.neighborhood.NeighborhoodDTO;
 import model.HousingUnit;
+import model.Neighborhood;
 
 /**
  * Servlet implementation class addHousingUnitServlet
@@ -40,6 +42,7 @@ public class addHousingUnitServlet extends HttpServlet {
 		
 		HousingUnitDTO housingUnitDTO = new HousingUnitDTO();
 		HousingUnit housingUnit = new HousingUnit();
+		NeighborhoodDTO neighborhoodDTO = new NeighborhoodDTO();
 		
 		try {
 			int streetNumber = Integer.parseInt(request.getParameter("streetNumber"));
@@ -48,6 +51,8 @@ public class addHousingUnitServlet extends HttpServlet {
 			String city = request.getParameter("city");
 			int zipcode = Integer.parseInt(request.getParameter("zipcode"));
 			String state = request.getParameter("state");
+			int tempNeighborhoodId = Integer.parseInt(request.getParameter("neighborhood"));
+			Neighborhood neighborhood = neighborhoodDTO.getNeighborhoodById(tempNeighborhoodId);
 			
 			housingUnit.setStreetNumber(streetNumber);
 			housingUnit.setStreetName(streetName);
@@ -55,10 +60,11 @@ public class addHousingUnitServlet extends HttpServlet {
 			housingUnit.setCity(city);
 			housingUnit.setZipcode(zipcode);
 			housingUnit.setState(state);
+			housingUnit.setNeighborhood(neighborhood);
 			
 			housingUnitDTO.addHousingUnit(housingUnit);
 			
-			getServletContext().getRequestDispatcher("/index.html").forward(request,response);
+			getServletContext().getRequestDispatcher("/viewAllHousingUnitsServlet").forward(request,response);
 			
 		} catch (NumberFormatException exception) {
 			getServletContext().getRequestDispatcher("/addHousingUnit.jsp").forward(request, response);

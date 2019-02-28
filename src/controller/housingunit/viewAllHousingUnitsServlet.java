@@ -1,28 +1,23 @@
 package controller.housingunit;
 
 import java.io.IOException;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import controller.neighborhood.NeighborhoodDTO;
-import model.Neighborhood;
-
 /**
- * Servlet implementation class addHousingUnitFormServlet
+ * Servlet implementation class viewAllHousingUnitsServlet
  */
-@WebServlet("/addHousingUnitFormServlet")
-public class addHousingUnitFormServlet extends HttpServlet {
+@WebServlet("/viewAllHousingUnitsServlet")
+public class viewAllHousingUnitsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public addHousingUnitFormServlet() {
+    public viewAllHousingUnitsServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,13 +27,15 @@ public class addHousingUnitFormServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		NeighborhoodDTO neighborhoodDTO = new NeighborhoodDTO();
+		HousingUnitDTO housingUnitDTO = new HousingUnitDTO();
 		
-		List<Neighborhood> allNeighborhoods = neighborhoodDTO.showAllNeighborhoods();
+		request.setAttribute("allHousingUnits", housingUnitDTO.showAllHousingUnits());
 		
-		request.setAttribute("allNeighborhoods", allNeighborhoods);
+		if(housingUnitDTO.showAllHousingUnits().isEmpty()) {
+			request.setAttribute("allHousingUnits", " ");
+		}
 		
-		getServletContext().getRequestDispatcher("/addHousingUnit.jsp").forward(request, response);
+		getServletContext().getRequestDispatcher("/viewAllHousingUnits.jsp").forward(request, response);
 	}
 
 	/**

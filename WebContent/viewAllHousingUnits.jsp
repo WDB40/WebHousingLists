@@ -15,6 +15,7 @@
 <form method="post" action="housingUnitActionServlet">
 	<table>
 		<tr>
+			<th></th>
 			<th>Street Number</th>
 			<th>Street Name</th>
 			<th>Unit Number</th>

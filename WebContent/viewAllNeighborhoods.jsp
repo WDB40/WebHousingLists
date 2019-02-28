@@ -24,8 +24,8 @@
 			<tr>
 				<td><input type="radio" name="id" value="${currentNeighborhood.id}"></td>
 				
-				<td>${currentNeighborhood.streetNumber}</td>				
-				<td>${currentNeighborhood.schoolDistrict.schoolDistrictId}</td>
+				<td>${currentNeighborhood.neighborhoodName}</td>				
+				<td>${currentNeighborhood.schoolDistrict.districtName}</td>
 			</tr>
 		</c:forEach>
 	</table>

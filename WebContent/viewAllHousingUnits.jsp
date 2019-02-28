@@ -35,7 +35,7 @@
 				<td>${currentHousingUnit.city}</td>
 				<td>${currentHousingUnit.zipcode}</td>
 				<td>${currentHousingUnit.state}</td>
-				<td>${currentHousingUnit.neighborhood.neighborName}</td>
+				<td>${currentHousingUnit.neighborhood.neighborhoodName}</td>
 			</tr>
 		</c:forEach>
 	</table>

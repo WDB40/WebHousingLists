@@ -1,11 +1,14 @@
 package controller.housingunit;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import controller.neighborhood.NeighborhoodDTO;
 
 /**
  * Servlet implementation class housingUnitActionServlet
@@ -43,6 +46,22 @@ public class housingUnitActionServlet extends HttpServlet {
 			getServletContext().getRequestDispatcher("/removeHousingUnitServlet").forward(request, response);
 		} else if(action.equals("Update")) {
 			
+			try {
+				NeighborhoodDTO neighborhoodDTO = new NeighborhoodDTO();
+				request.setAttribute("allNeighborhoods", neighborhoodDTO.showAllNeighborhoods());
+				
+				if(neighborhoodDTO.showAllNeighborhoods().isEmpty()) {
+					request.setAttribute("allNeighborhoods", " ");
+				}
+				
+				int housingUnitId = Integer.parseInt(request.getParameter("id"));
+				request.setAttribute("housingUnit", housingUnitDTO.getHousingUnitById(housingUnitId));
+				
+				getServletContext().getRequestDispatcher("/updateHousingUnit.jsp").forward(request, response);
+				
+			} catch (NumberFormatException exception) {
+				getServletContext().getRequestDispatcher("/index.html").forward(request, response);
+			}
 		}
 	}
 

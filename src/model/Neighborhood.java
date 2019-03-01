@@ -17,7 +17,7 @@ public class Neighborhood {
 	@Column(name = "ID")
 	private int id;
 	@Column(name = "NeighborhoodName")
-	private String neighborName;
+	private String neighborhoodName;
 	@JoinColumn(name = "SchoolDistrictID")
 	private int schoolDistrictId;
 
@@ -25,9 +25,9 @@ public class Neighborhood {
 		super();
 	}
 
-	public Neighborhood(String neighborName, int schoolDistrictId) {
+	public Neighborhood(String neighborhoodName, int schoolDistrictId) {
 		super();
-		this.neighborName = neighborName;
+		this.neighborhoodName = neighborhoodName;
 		this.schoolDistrictId = schoolDistrictId;
 	}
 
@@ -39,12 +39,12 @@ public class Neighborhood {
 		this.id = id;
 	}
 
-	public String getNeighborName() {
-		return neighborName;
+	public String getNeighborhoodName() {
+		return neighborhoodName;
 	}
 
-	public void setNeighborName(String neighborName) {
-		this.neighborName = neighborName;
+	public void setNeighborhoodName(String neighborhoodName) {
+		this.neighborhoodName = neighborhoodName;
 	}
 
 	public int getSchoolDistrictId() {
@@ -57,8 +57,8 @@ public class Neighborhood {
 
 	@Override
 	public String toString() {
-		return "Neighborhood [id=" + id + ", neighborName=" + neighborName + ", schoolDistrictId=" + schoolDistrictId
-				+ "]";
+		return "Neighborhood [id=" + id + ", neighborhoodName=" + neighborhoodName + ", schoolDistrictId="
+				+ schoolDistrictId + "]";
 	}
 
 }

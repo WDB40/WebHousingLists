@@ -30,7 +30,7 @@
 				
 				<td>${currentListing.housingUnit.streetNumber}</td>
 				<td>${currentListing.housingUnit.streetName}</td>
-				<td>${currentListing.housingUnit.neighborhood.neighborName}</td>
+				<td>${currentListing.housingUnit.neighborhood.neighborhoodName}</td>
 				<td>${currentListing.price}</td>
 				<td>${currentListing.listDate}</td>
 			</tr>

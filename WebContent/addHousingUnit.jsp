@@ -49,7 +49,7 @@
 			<td>
 				<select name="neighborhood">
 					<c:forEach items="${requestScope.allNeighborhoods}" var="currentNeighborhood">
-						<option value="${currentNeighborhood.id}">${currentNeighborhood.neighborName}</option>
+						<option value="${currentNeighborhood.id}">${currentNeighborhood.neighborhoodName}</option>
 					</c:forEach>
 				</select>
 			</td>
